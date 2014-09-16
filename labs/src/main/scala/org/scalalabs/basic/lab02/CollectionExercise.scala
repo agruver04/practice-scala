@@ -33,7 +33,39 @@ object CollectionExercise01 {
    *
    */
   def googleCodeJamGooglerese(lines: String*): Seq[String] = {
-    error("fix me")
+    lines.map(y => y.map(x => decodeLetter(x)).toString).toSeq
+  }
+  
+  def decodeLetter(letter: Char) : Char = {
+    letter match {
+    case 'a' => 'y'
+    case 'b' => 'h'
+    case 'c' => 'e'
+    case 'd' => 's'
+    case 'e' => 'o'
+    case 'f' => 'c'
+    case 'g' => 'v'
+    case 'h' => 'x'
+    case 'i' => 'd'
+    case 'j' => 'u'
+    case 'k' => 'i'
+    case 'l' => 'g'
+    case 'm' => 'l'
+    case 'n' => 'b'
+    case 'o' => 'k'
+    case 'p' => 'r'
+    case 'q' => 'z'
+    case 'r' => 't'
+    case 's' => 'n'
+    case 't' => 'w'
+    case 'u' => 'j'
+    case 'v' => 'p'
+    case 'w' => 'f'
+    case 'x' => 'm'
+    case 'y' => 'a'
+    case 'z' => 'q'
+    case _ => letter
+    }
   }
 }
 /*========================================================== */

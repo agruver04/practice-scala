@@ -11,7 +11,7 @@ object ListManipulationExercise02 {
    * As usual, various ways exist: pattern matching, folding, ...
    */
   def maxElementInList(l: List[Int]): Int = {
-    error("fix me")
+    l.max;
   }
 
   /**
@@ -19,7 +19,22 @@ object ListManipulationExercise02 {
    * of the two list
    */
   def sumOfTwo(l1: List[Int], l2: List[Int]): List[Int] = {
-    error("fix me")
+    var x = 0;
+    val newList = new ListBuffer[Int]();
+    val max = math.max(l1.length -1, l2.length-1)
+    for( x <- 0 to max ){
+    	if(l1.length - 1 < x) {
+    	  newList += l2(x)
+    	}
+    	else if(l2.length -1 < x) {
+    	  newList += l1(x)
+    	}
+    	else {
+    	  newList += l1(x) + l2(x)
+    	} 
+    }
+    
+    newList.toList
   }
 
   /**
@@ -27,7 +42,10 @@ object ListManipulationExercise02 {
    * method above
    */
   def sumOfMany(l: List[Int]*): List[Int] = {
-    error("fix me")
+    
+    
+    val starter = List.fill(l(0).length)(0)
+    l.foldLeft(starter)(sumOfTwo(_,_))   
   }
 
   case class Person(age: Int, firstName: String, lastName: String)
@@ -39,6 +57,9 @@ object ListManipulationExercise02 {
    * in a one-liner.
    */
   def separateTheYoungFromTheOld(persons: List[Person]): List[List[String]] = {
+    
+    List(persons.filter(_.age < 18).map(_.firstName).sorted, persons.filter(_.age >= 18).map(_.firstName).sorted)
+    /*
     var youngins: ListBuffer[Person] = new ListBuffer[Person]()
     var elders: ListBuffer[Person] = new ListBuffer[Person]()
     var validYoungNames: ListBuffer[String] = new ListBuffer[String]()
@@ -63,5 +84,6 @@ object ListManipulationExercise02 {
     }
     List(validYoungNames.toList, validOldNames.toList)
   }
-
+  */
+  }
 }
